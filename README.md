@@ -9,8 +9,8 @@
  4. 与第‘3’项中描述文件对应的 应用 bundleID .
 
 ## 脚本使用
- 1. 打开命令行 ‘终端’ 将 Resign.sh 拖入
- 2. 按照提示, 选取发布证书 ‘直选取括号 内 部分 eg.  iPhone Developer: ***********.co ., LTD. ’ 回车
+ 1. 打开命令行 ‘终端’ 将 Resign.sh 拖入 回车
+ 2. 按照提示, 选取发布证书 ‘只选取括号内部分 eg.  iPhone Developer: ***********.co ., LTD. ’ 回车
  3. 将ipa 文件拖入命令行 回车
  4. 将 描述文件 ‘*.mobileprovision’ 文件拖入命令行. 回车
  5. 输入新的 BundleID 回车
