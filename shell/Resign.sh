@@ -122,9 +122,9 @@ codesign -fs "$EFBCertificate" --no-strict --entitlements=$TMP_PATH/entitlements
 # # 压缩
 cd $TMP_PATH/
 
-zip -ryq ../target/Resigned_EFB.ipa Payload/
+zip -ryq ../target/Resigned.ipa Payload/
 
-echo -e "*************************************\n !!!APP 签名完成!!! \n ipa文件路径: $TARGET_PATH/Resigned_EFB.ipa\n*************************************"
+echo -e "*************************************\n !!!APP 签名完成!!! \n ipa文件路径: $TARGET_PATH/Resigned.ipa\n*************************************"
 
 # # 移除tmp 
 rm -rf $TMP_PATH 
