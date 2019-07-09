@@ -1,11 +1,11 @@
-#! /bin/bash
+#! /bin/bash 
 
-# Program :
-#    This program re-sign an ipa with 'Apple Enterprise Certificate'
-# History :
-# 2019/07/05  GFeng	First release
+# Program : 
+#    This program re-sign an ipa with 'Apple Enterprise Certificate' 
+# History : 
+# 2019/07/05  GuoFeng	First release 
 
-## TODO : 检查签名 命令返回结果
+## TODO : 检查签名 命令返回结果 
 echo "开始签名"
 
 # 绝对路径: 
@@ -48,21 +48,21 @@ read BundleID
 /usr/libexec/PlistBuddy -c "Set :BundleID $BundleID" "$SIGNINFO_PATH/signInfo.plist"
 
 
-EFBBundleID=$(/usr/libexec/PlistBuddy -c 'Print :'BundleID'' $SIGNINFO_PATH/signInfo.plist)
-EFBCertificate=$(/usr/libexec/PlistBuddy -c 'Print :'DistributionCertificateName'' $SIGNINFO_PATH/signInfo.plist)
-EFBMobileProvision=$(/usr/libexec/PlistBuddy -c 'Print :'MobileProvisionPath'' $SIGNINFO_PATH/signInfo.plist)
+APPBundleID=$(/usr/libexec/PlistBuddy -c 'Print :'BundleID'' $SIGNINFO_PATH/signInfo.plist)
+APPCertificate=$(/usr/libexec/PlistBuddy -c 'Print :'DistributionCertificateName'' $SIGNINFO_PATH/signInfo.plist)
+APPMobileProvision=$(/usr/libexec/PlistBuddy -c 'Print :'MobileProvisionPath'' $SIGNINFO_PATH/signInfo.plist)
 IPA_PATH=$(/usr/libexec/PlistBuddy -c 'Print :'IpaPath'' $SIGNINFO_PATH/signInfo.plist)
 
-echo -e "*************************************\n 输入信息 完成 \n BundleID : $EFBBundleID \n 发布证书名称 : $EFBCertificate \n 描述文件 : $EFBMobileProvision \n*************************************"
+echo -e "*************************************\n 输入信息 完成 \n BundleID : $APPBundleID \n 发布证书名称 : $APPCertificate \n 描述文件 : $APPMobileProvision \n*************************************"
 echo "签名执行中, 请等待"
 
 # 创建 Entitlements.plist 文件
 # echo "开始 创建 entitlements ..............." 
-$(/usr/libexec/PlistBuddy -x -c "print :Entitlements " /dev/stdin <<< $(security cms -D -i $EFBMobileProvision) > $TMP_PATH/entitlements.plist)
+$(/usr/libexec/PlistBuddy -x -c "print :Entitlements " /dev/stdin <<< $(security cms -D -i $APPMobileProvision) > $TMP_PATH/entitlements.plist)
 
 # echo "创建 entitlements 结束 ..............." 
 
-# echo "解压 $IPA_PATH/FMEFB.ipa ............"
+# echo "解压 $IPA_PATH/*.ipa ............"
 
 unzip -oqq "$IPA_PATH" -d "$TMP_PATH"
 
@@ -78,11 +78,11 @@ APP_NAME=$(ls $PAYLOAD_PATH)
 # echo "应用名称: $APP_NAME"
 chmod 666 $PAYLOAD_PATH/$APP_NAME/Info.plist
 
-/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier ${EFBBundleID}" "$PAYLOAD_PATH/$APP_NAME/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier ${APPBundleID}" "$PAYLOAD_PATH/$APP_NAME/Info.plist"
 
 # # 更换 mobileprovision 
 # echo "替换描述文件 ..............."
-cp $EFBMobileProvision $TMP_PATH/Payload/$APP_NAME/embedded.mobileprovision
+cp $APPMobileProvision $TMP_PATH/Payload/$APP_NAME/embedded.mobileprovision
 
 # # # 设置执行权限  貌似没用
 # UNIXFILE="$APP_NAME"
@@ -110,13 +110,13 @@ FRAMEWORKS_PATH=$APP_PATH/Frameworks
 for  framework  in "$FRAMEWORKS_PATH/"*
 do 
 	# echo "FRAMEWORK : $framework"
-	codesign -fs "$EFBCertificate"  $framework 
+	codesign -fs "$APPCertificate"  $framework 
 	# TODO : 检查签名结果
 	sleep 0.1
 done
 
 # #codesign 
-codesign -fs "$EFBCertificate" --no-strict --entitlements=$TMP_PATH/entitlements.plist $TMP_PATH/Payload/$APP_NAME
+codesign -fs "$APPCertificate" --no-strict --entitlements=$TMP_PATH/entitlements.plist $TMP_PATH/Payload/$APP_NAME
 
 
 # # 压缩
