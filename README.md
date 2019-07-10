@@ -1,4 +1,51 @@
-# ipa_re_sign
+# ipa _re_sign 
+
+This shell script re_sign an ipa using Apple Enterprise Certificate .
+
+------
+
+## *Preparation*
+
+_1_  ipa file you would like to re_sign
+
+_2_  Apple Enterprise Distribution Certificate [^double click then will found in keychain]
+
+*3*  Distribution mobileprovision file 
+
+*4*  New BundleID in accordance with the mobile provision file in [^3]
+
+------
+
+## *Usage* 
+
+*1*  drag 'Resign.sh' to command line tool
+
+*2*  according to the prompt message, select the distribution certificate which you would like to. Only select the part inside quotes  Eg. <u>iPhone Distribution : ********.co .,LTD.</u>
+
+_3_  drag the ipa file to command line tool 
+
+*4*  drag the mobileprovision file to command line tool 
+
+*5*  input the new BundleID 
+
+*6*  Done !
+
+------
+
+## *Check Dependency*
+
+Including but not limited to the following
+
+*1*  codesign ,
+
+*2*  security ,
+
+*3*  /usr/libexec/PlistBuddy 
+
+_4_ Apple 'wwdr'
+
+# 中文
+# ipa_重签名
 使用企业证书 对 ipa 进行重签名. 
 如果有任何问题,请在issues 中提问.
 
