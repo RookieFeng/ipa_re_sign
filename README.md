@@ -1,6 +1,6 @@
 # ipa _re_sign  
 
-[中文介绍](https://github.com/RookieFeng/ipa_re_sign/blob/master/README_CH)
+[中文介绍](https://github.com/RookieFeng/ipa_re_sign/blob/master/README_CH.md)
 
 This shell script re_sign an ipa using Apple Enterprise Certificate .
 
