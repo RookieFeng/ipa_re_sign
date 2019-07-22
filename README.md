@@ -20,7 +20,7 @@ _2_ Apple Enterprise Distribution Certificate   <u>double click then will found 
 
 ## Usage 
 
-*1*  drag 'Resign.sh' to command line tool
+*1*  drag 'Resign_en.sh' to command line tool
 
 *2* according to the prompt message, select the distribution certificate  you would like to use. Only select content within double quotes   Eg. iPhone Distribution : ****.co .,LTD.
 
