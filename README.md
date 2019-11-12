@@ -20,17 +20,19 @@ _2_ Apple Enterprise Distribution Certificate   <u>double click then will found 
 
 ## Usage 
 
-*1*  drag 'Resign_en.sh' to command line tool
+*1*  set execution permissions to  Resign.sh or Resign_en.sh  eg : chmod +x ./Resign_en.sh 
 
-*2* according to the prompt message, select the distribution certificate  you would like to use. Only select content within double quotes   Eg. iPhone Distribution : ****.co .,LTD.
+*2*  drag 'Resign_en.sh' to command line tool
 
-_3_ drag the ipa file to command line tool 
+*3* according to the prompt message, select the distribution certificate  you would like to use. Only select content within double quotes   Eg. iPhone Distribution : ****.co .,LTD.
 
-*4* drag the mobileprovision file to command line tool 
+_4_ drag the ipa file to command line tool 
 
-*5* input the new BundleID 
+*5* drag the mobileprovision file to command line tool 
 
-*6* Done !  (if no error occurs 😂) 
+*6* input the new BundleID 
+
+*7* Done !  (if no error occurs 😂) 
 
 ------
 
