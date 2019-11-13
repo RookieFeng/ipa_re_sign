@@ -1,5 +1,6 @@
 #! /bin/bash 
 
+#测试 哈哈哈哈哈
 # Program : 
 #    This program re-sign an ipa with 'Apple Enterprise Certificate' 
 # History : 
