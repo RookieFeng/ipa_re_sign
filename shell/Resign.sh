@@ -115,6 +115,11 @@ do
 	sleep 0.1
 done
 
+
+## 移除 Watch 和 Plugin
+rm -rf "$APP_PATH/PlugIns"
+rm -rf "$APP_PATH/Watch"
+
 # #codesign 
 codesign -fs "$APPCertificate" --no-strict --entitlements=$TMP_PATH/entitlements.plist $TMP_PATH/Payload/$APP_NAME
 
